@@ -1,6 +1,6 @@
-const fs = require('fs');  
-const {pipeline} = require('stream');
-const csvToJsonV2 = require("csvtojson");
+import * as fs from 'fs';
+import {pipeline} from 'stream';
+import csvToJsonV2 from 'csvtojson';
 
 const csvFilePath ='./csvdirectory/example.csv';
 const jsonFilePath ='./jsondirectory/test';
