@@ -1,7 +1,6 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-  ],
+  "plugins": [],
   "env": {
       "browser": true,
       "node": true,
@@ -26,7 +25,7 @@
           "restParams": true,
           "spread": true,
           "superInFunctions": true,
-          "templateStrings": true,
+          "templateStrings": true
       }
   },
   "rules": {

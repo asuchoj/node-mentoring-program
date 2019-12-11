@@ -4,10 +4,23 @@
   "description": "First commit",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "task1": "nodemon --exec babel-node task1/task1.js",
-    "task2": "nodemon --exec babel-node task1/task2.js"
+    "task1.1": "nodemon --exec babel-node task1/task1.js",
+    "task1.2": "nodemon --exec babel-node task1/task2.js",
+    "start": "node --inspect=5858 -r ts-node/register ./task2/task1.ts",
+    "start:watch": "nodemon",
+    "build": "tsc"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.test.ts",
+      "*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [],
+    "exec": "npm start",
+    "ext": "ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +33,7 @@
   },
   "homepage": "https://github.com/asuchoj/node-mentoring-program#readme",
   "dependencies": {
+    "babel-eslint": "^10.0.3",
     "csvtojson": "^2.0.10",
     "express": "^4.17.1"
   },

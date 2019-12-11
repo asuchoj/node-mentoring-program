@@ -7,3 +7,4 @@ process.stdin.on('readable', () => {
     process.stdout.write([...chank].reverse().join(''));
   }
 });
+
