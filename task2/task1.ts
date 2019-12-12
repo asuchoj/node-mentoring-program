@@ -48,7 +48,7 @@ app.put("/user", (req, res) => {
 app.delete("/user", (req, res) => {
     try {
         const userId = req.query.id;
-        imitationDB.delete(userId);
+        imitationDB.deleteUser(userId);
         res.send(true);
     } catch(error) {
         res.send(error)

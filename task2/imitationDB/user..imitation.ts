@@ -24,10 +24,10 @@ class UserImitationDB {
     Object.assign(this.users.find(item => item.id === userId), user);
   }
 
-  delete(userId: string): void {
-    const deleteUser = this.users.findIndex(item => item.id === userId);
+  deleteUser(userId: string): void {
+    this.users.find(item => item.id === userId).isDeleted = true;
 
-    if (deleteUser != -1) this.users.splice(deleteUser, 1);
+    console.log(this.users);
   }
 
   addDataForAddUser(user: User): User {
