@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3cb4b70b-b673-45af-a8c2-6f471664f75e",
+		"_postman_id": "a5fa9679-e92d-4627-b072-953f9f06b583",
 		"name": "node.mentoring.module2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -19,12 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"login\": \"alex\",\n\t\"password\": \"1111\",\n\t\"age\": 28\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n\t\"login\": \"alex\",\n\t\"password\": \"1111\",\n\t\"age\": 28\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/user",
@@ -80,20 +75,43 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"login\": \"alex\",\n\t\"password\": \"22223\",\n\t\"age\": 28\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n\t\"login\": \"alex\",\n\t\"password\": \"22223\",\n\t\"age\": 28\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000?id=693b9e13-1913-4115-a238-dc2a4571b225",
+					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b225",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "693b9e13-1913-4115-a238-dc2a4571b225"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b225",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					],
 					"query": [
 						{
 							"key": "id",
@@ -104,6 +122,5 @@
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

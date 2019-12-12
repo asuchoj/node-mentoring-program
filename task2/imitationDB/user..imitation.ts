@@ -1,4 +1,4 @@
-import { User } from './../interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 import { generatedUUIDv4 } from '../utils/uuidGenerator';
 
 class UserImitationDB {
@@ -20,12 +20,14 @@ class UserImitationDB {
     this.users.push(user);
   }
 
-  updateUser(user: User): void {
-    Object.assign(this.users.find(item => item.id === user.id), user);
+  updateUser(user: User, userId: string): void {
+    Object.assign(this.users.find(item => item.id === userId), user);
   }
 
   delete(userId: string): void {
-    this.users = this.users.slice(this.users.findIndex(item => item.id === userId), 1);
+    const deleteUser = this.users.findIndex(item => item.id === userId);
+
+    if (deleteUser != -1) this.users.splice(deleteUser, 1);
   }
 
   addDataForAddUser(user: User): User {
