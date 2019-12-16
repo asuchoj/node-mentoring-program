@@ -16,9 +16,17 @@ app.use(function(req, res, next) {
 
 app.get("/user", (req, res) => {
     try {
-        const userId = req.query.id;
-        const foundUser = imitationDB.getUser(userId);
-        res.send(JSON.stringify(foundUser));
+        if (req.query.id) {
+            const userId: string = req.query.id;
+            const foundUser: User = imitationDB.getUser(userId);
+
+            res.send(JSON.stringify(foundUser));
+        } else if (req.query.loginSubstring && req.query.from && req.query.to) {
+            const loginSubstring: string = req.query.loginSubstring;
+            const limit: {from: number, to: number} = {from: +req.query.from, to: +req.query.to};
+
+            res.send(JSON.stringify(imitationDB.getAutoSuggestUsers(loginSubstring, limit)));
+        }
     } catch {
         res.send('error!!!')
     }
@@ -36,7 +44,7 @@ app.post("/user", (req, res) => {
 
 app.put("/user", (req, res) => {
     try {
-        const userId = req.query.id;
+        const userId: string = req.query.id;
         const user: User = req.body;
         imitationDB.updateUser(user, userId);
         res.send(true)
@@ -47,7 +55,7 @@ app.put("/user", (req, res) => {
 
 app.delete("/user", (req, res) => {
     try {
-        const userId = req.query.id;
+        const userId: string = req.query.id;
         imitationDB.deleteUser(userId);
         res.send(true);
     } catch(error) {
