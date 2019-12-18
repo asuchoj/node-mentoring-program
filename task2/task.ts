@@ -3,8 +3,7 @@ import * as express from "express";
 import { User } from "./interfaces/user.interface";
 import { imitationDB } from "./imitationDB/user..imitation";
 import { validateSchema } from "./utils/validateSchema";
-import { userPutErrorSchema } from "./errorsSchemas/user.put.error.shema";
-import { userPostErrorSchema } from "./errorsSchemas/user.post.error.shema";
+import { userErrorSchema } from "./errorsSchemas/user.error.shema";
 
 const app: any = express();
 const router = express.Router();
@@ -45,7 +44,7 @@ router.get("/user", (req, res) => {
   }
 });
 
-router.post("/user", validateSchema(userPostErrorSchema), (req, res) => {
+router.post("/user", validateSchema(userErrorSchema), (req, res) => {
   try {
     let user: User = imitationDB.addDataForAddUser(req.body);
     imitationDB.addUser(user);
@@ -55,7 +54,7 @@ router.post("/user", validateSchema(userPostErrorSchema), (req, res) => {
   }
 });
 
-router.put("/user", validateSchema(userPutErrorSchema), (req, res) => {
+router.put("/user", validateSchema(userErrorSchema), (req, res) => {
   try {
     const userId: string = req.query.id;
     const user: User = req.body;
