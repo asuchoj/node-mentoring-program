@@ -78,3 +78,8 @@ router.delete("/user", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running in http://localhost:${PORT}`);
 });
+
+//if get request don't find user by id - error
+
+//validate params requests
+
