@@ -1,7 +1,7 @@
-import { User } from "../interfaces/user.interface";
-import { generatedUUIDv4 } from "../utils/uuidGenerator";
+import {User} from "../interfaces/user.interface";
+import {generatedUUIDv4} from "../utils/uuidGenerator";
 
-class UserImitationDB {
+class UserModels {
   users: User[] = [
     {
       login: "asdasdasalex",
@@ -47,14 +47,11 @@ class UserImitationDB {
     }
   ];
 
-  public getUser(userId: string): User {
+  public getUser(userId: string): User | string {
     return this.users.find(user => user.id === userId);
   }
 
-  public getAutoSuggestUsers(
-    loginSubstring: string,
-    limit: { from: number; to: number }
-  ): User[] {
+  public getAutoSuggestUsers(loginSubstring: string, limit: { from: number; to: number }): User[] {
     return this.users
       .filter(item => item.login.includes(loginSubstring))
       .sort((a, b) => (a.login > b.login ? -1 : 1))
@@ -63,23 +60,25 @@ class UserImitationDB {
 
   public addUser(user: User): void {
     this.users.push(user);
-
-    console.log('add', this.users);
   }
 
-  public updateUser(user: User, userId: string): void {
-    Object.assign(
-      this.users.find(item => item.id === userId),
-      user
-    );
+  public updateUser(user: User, userId: string): boolean {
+    const userItem = this.users.find(item => item.id === userId);
 
-    console.log('update', this.users);
+    if (userItem) {
+      Object.assign(
+        this.users.find(item => item.id === userId),
+        user
+      );
+
+      return true;
+    } else {
+      return false
+    }
   }
 
   public deleteUser(userId: string): void {
     this.users.find(item => item.id === userId).isDeleted = true;
-
-    console.log('delete', this.users);
   }
 
   public addDataForAddUser(user: User): User {
@@ -89,4 +88,4 @@ class UserImitationDB {
   }
 }
 
-export const imitationDB = new UserImitationDB();
+export const usersModels = new UserModels();

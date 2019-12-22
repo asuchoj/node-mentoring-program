@@ -1,4 +1,4 @@
-import { errorResponse } from "./errorResponse"
+import {errorResponse} from "./errorResponse"
 
 export function validateSchema (schema: any) :any {
   return (req, res, next) => {
