@@ -42,19 +42,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b225",
+					"raw": "http://localhost:3000/user/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"user"
+						"user",
+						":id"
 					],
-					"query": [
+					"variable": [
 						{
 							"key": "id",
-							"value": "693b9e13-1913-4115-a238-dc2a4571b225"
+							"value": "693b9e13-1913-4115-a238-dc2a4571b221"
 						}
 					]
 				}
@@ -75,10 +76,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"login\": \"alex\",\n\t\"password\": \"22223\",\n\t\"age\": 28\n}"
+					"raw": "{\n\t\"login\": \"aleNewasdasdwqeqweqweqew\",\n\t\"password\": \"3d\",\n\t\"age\": 25\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b225",
+					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b221",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -90,7 +91,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "693b9e13-1913-4115-a238-dc2a4571b225"
+							"value": "693b9e13-1913-4115-a238-dc2a4571b221"
 						}
 					]
 				}
@@ -103,7 +104,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b225",
+					"raw": "http://localhost:3000/user?id=693b9e13-1913-4115-a238-dc2a4571b221",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -115,7 +116,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "693b9e13-1913-4115-a238-dc2a4571b225"
+							"value": "693b9e13-1913-4115-a238-dc2a4571b221"
 						}
 					]
 				}
@@ -128,14 +129,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user?loginSubstring=ale&from=0&to=10",
+					"raw": "http://localhost:3000/users?loginSubstring=ale&from=1&to=80",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"user"
+						"users"
 					],
 					"query": [
 						{
@@ -144,11 +145,11 @@
 						},
 						{
 							"key": "from",
-							"value": "0"
+							"value": "1"
 						},
 						{
 							"key": "to",
-							"value": "10"
+							"value": "80"
 						}
 					]
 				},
