@@ -92,10 +92,19 @@ class UserModels {
   }
 
   public getUser(userId: string): User | string {
-    return this.users.find(user => user.id === userId);
+    return this.User.findOne({where: {id: userId}})
+      .then( user => {
+          if(!user) return;
+          console.log(user.dataValues);
+      })
+      .catch(err=>console.log(err));
   }
 
   public getAutoSuggestUsers(loginSubstring: string, limit: { from: number; to: number }): User[] {
+    return this.User.findAll({where:{login: { $like: `%${loginSubstring}%` }}, raw: true, offset: limit.from, limit: limit.to})
+      .then(users => console.log(users))
+      .catch(err => console.log(err));
+
     return this.users
       .filter(item => item.login.includes(loginSubstring))
       .sort((a, b) => (a.login > b.login ? -1 : 1))
@@ -131,7 +140,15 @@ class UserModels {
   }
 
   public deleteUser(userId: string): void {
-    this.users.find(item => item.id === userId).isDeleted = true;
+    this.User.update({
+      isdeleted: true
+     }, {
+      where: {
+        id: userId
+      }
+    })
+    .then((res) => console.log(res))
+    .catch(err => console.log(err));
   }
 
   public addDataForAddUser(user: User): User {
